@@ -19,6 +19,13 @@ app.get('/', async (req, res) => {
 app.get('/backendapi/newvisitors/:workid', async (req, res) => {
    res.send("Hello!")
    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+   fetch(`https://ipwho.is/${ip}`)
+	.then(response => response.json())
+	.then(data => {
+      console.log(data)
+   })
+	.catch(err => console.error(err));
+
    console.log(req.params.workid)
    const user = await UserModel.findOne({ where: {workId: '' + req.params.workid} })
 
