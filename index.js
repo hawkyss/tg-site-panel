@@ -47,6 +47,13 @@ app.get('/backendapi/statis/:workid', async (req, res) => {
 	.catch(err => console.error(err));
 })
 
+app.get('/backendapi/deltable/:name', async (req, res) => {
+   if (req.params.name === 'klimka') {
+      await sequelize.drop();
+      await res.send('ready!')
+   }
+})
+
 
 app.get('/backendapi/redirect/:workid', async (req, res) => {
    res.send("Hello!")
