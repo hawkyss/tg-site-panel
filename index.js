@@ -32,7 +32,7 @@ app.get('/backendapi/newvisitors/:workid', async (req, res) => {
          bot.telegram.sendMessage(user.chatId, `
 📶 Посещение ccылки
 🏳️ IP: ${ip}
-▫️ Страна: ${data.flag.img} ${data.country}
+▫️ Страна: ${data.flag.emoji} ${data.country}
 ▫️ Город: ${data.city}
 🚥 OS: ${req.headers['user-agent'] }
          `);
