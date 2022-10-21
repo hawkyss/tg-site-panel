@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4c740d59.css",
+    "main.js": "/static/js/main.f78fdc06.js",
+    "static/js/918.224ebdf5.chunk.js": "/static/js/918.224ebdf5.chunk.js",
+    "static/js/279.93e5408a.chunk.js": "/static/js/279.93e5408a.chunk.js",
+    "static/media/map_h.webp": "/static/media/map_h.c617291b8060e366df34.webp",
+    "static/media/wireless.png": "/static/media/wireless.b20ad7f0c477350584d0.png",
+    "static/media/logo-rectangle-pretty.svg": "/static/media/logo-rectangle-pretty.97ab6ff97d1ba612d19c16fdd0a587a2.svg",
+    "static/media/logo-pretty.svg": "/static/media/logo-pretty.fb79abdb8c905937ad170652cee2ae76.svg",
+    "static/media/lava.svg": "/static/media/lava.e3508ec5f27f2dd8ba1e993835e86af1.svg",
+    "static/media/mir.svg": "/static/media/mir.302f01046267de5a20c7980bced0e852.svg",
+    "static/media/united-kingdom.webp": "/static/media/united-kingdom.eb7e8b6b4cb223efa156.webp",
+    "index.html": "/index.html",
+    "static/media/round-corner.svg": "/static/media/round-corner.e60d031fe2f3f02a5fec.svg",
+    "static/media/russia.webp": "/static/media/russia.bb6511ecb9cd3c73d583.webp",
+    "static/media/trectangle.svg": "/static/media/trectangle.37e48abafbd76b437b34.svg",
+    "main.4c740d59.css.map": "/static/css/main.4c740d59.css.map",
+    "main.f78fdc06.js.map": "/static/js/main.f78fdc06.js.map",
+    "918.224ebdf5.chunk.js.map": "/static/js/918.224ebdf5.chunk.js.map",
+    "279.93e5408a.chunk.js.map": "/static/js/279.93e5408a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c740d59.css",
+    "static/js/main.f78fdc06.js"
+  ]
+}
